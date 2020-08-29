@@ -1,0 +1,130 @@
+/* Author*/
+.author-header {
+  padding: var(--gap) 0;
+
+  @media (--viewport-md) {
+    padding: var(--gap-lg) 0;
+  }
+
+  .author-card__image {
+    @media (--viewport-md) {
+      width: 15rem;
+      height: 15rem;
+    } 
+    
+    @media (--viewport-lg) {
+      width: 20rem;
+      height: 20rem;
+    }
+  }
+
+  .author-card__title {
+    @media (--viewport-md) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.author-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;    
+  padding: var(--gap-lg) 0;
+  background-color: var(--color-bg-accent-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--global-radius);
+  overflow: hidden;
+
+  @media (--viewport-sm) {
+    flex-direction: row-reverse;
+  }
+
+  @media (--viewport-md) {
+    padding: var(--gap-xl) 0;
+  }
+
+  &.no-img {
+    .author-card__title,
+    .author-card__counter {
+      text-align: center;
+    }
+
+    .author-card__social {
+      justify-content: center;
+    }
+
+    .author-card__bio {
+      text-align: center;
+    }
+  }
+
+  &__image {
+    display: block;
+    object-fit: cover;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 var(--gap);
+    border-radius: var(--global-radius-rounded);
+    border: 5px solid var(--color-secondary);
+    overflow: hidden;
+
+    @mixin attention {
+      box-shadow: 
+        0 0 0 5px color(var(--color-secondary) blend(var(--color-bg) 50%));
+    }
+  }
+
+  &__bio {
+    display: none;
+    color: var(--color-text-accent-2);
+
+    @media (--viewport-md) {
+      display: block;
+      margin: 0 0 var(--gap);
+      max-width: calc(24 * var(--gap));
+    }
+  }
+
+  &__content {
+    padding: var(--gap);
+    text-align: center;
+    flex: 1;
+
+    @media (--viewport-sm) {
+      flex: 0 0 auto;
+    }
+  }
+
+  &__title {
+    margin-bottom: var(--gap-xs);
+
+    a {
+      @mixin attention {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__counter {
+    margin-bottom: var(--gap);
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-primary);
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+
+    a {
+      margin: var(--gap-xs);
+      color: var(--color-text-accent-2);
+
+      &:first-of-type { margin-left: 0; }
+
+      @mixin attention {
+        color: var(--color-primary);
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{{!-- Blog menu --}}
+<div class="menu" id="menu">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 is-flex end-xs">
+        <a tabindex="0" class="menu--close" id="menu-close">
+          {{>icon name="x" size="lg"}}
+        </a>
+      </div>
+      <div class="col-xs-12">
+        <div class="menu__main">
+          {{navigation}}
+        </div>
+        {{#if @site.secondary_navigation}}
+        <div class="menu__secondary">
+          {{navigation type="secondary"}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

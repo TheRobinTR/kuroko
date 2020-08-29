@@ -1,0 +1,62 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page__header">
+      </div>
+    </div>
+  </div>
+  {{#get "authors" limit="all" include="count.posts" order="count.posts desc"}}
+  <div class="row">
+    {{#foreach authors}}
+      <div class="col-xs-12 col-lg-6 m-b-lg">
+        <div class="author-card{{^if profile_image}} no-img{{/if}}">
+          {{!-- Author profile image --}}
+          {{#if profile_image}}
+            <a href="{{url}}">
+              <img class="lazyload author-card__image" 
+                data-srcset="{{img_url profile_image size="xs"}} 100w,
+                  {{img_url profile_image size="s"}} 300w"
+                data-sizes="(max-width: 800px) 25vw, 400px"
+                data-src="{{img_url profile_image size="s"}}" alt="{{name}}"
+                src="{{asset 'images/img-placeholder-square.jpg'}}" />
+            </a>
+          {{/if}}
+
+          <div class="author-card__content">
+            {{!-- Author Name --}}
+            <h2 class="author-card__title"><a href="{{url}}">{{name}}</a></h2>
+            <div class="author-card__counter">
+              {{plural count.posts empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}
+            </div>
+
+            {{!-- Author social links --}}
+            <div class="author-card__social">
+              {{#if twitter}}
+                <a class="author-card__social-link" href="{{twitter_url}}" target="_blank" title="Twitter" aria-label="Twitter">
+                  {{> icon name="twitter" class="icon--filled"}}
+                </a>
+              {{/if}}
+              {{#if facebook}}
+                <a class="author-card__social-link" href="{{facebook_url}}" target="_blank" title="Facebook" aria-label="Facebook">
+                  {{> icon name="facebook" class="icon--filled"}}
+                </a>
+              {{/if}}
+              {{!-- Author website --}}
+              {{#if website}}
+                <a class="author-card__social-link" href="{{website}}" target="_blank" title="Website" aria-label="Website">
+                  {{> icon name="link"}}
+                </a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/foreach}}
+  </div>
+  {{/get}}
+</div>
+{{/post}}

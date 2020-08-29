@@ -1,0 +1,323 @@
+/* Header */
+.header {
+  /* position: fixed; */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: inherit;
+  z-index: 50;
+
+  &__top {
+    border-bottom: 1px solid var(--color-border);
+
+    @media (--viewport-md) {
+      border-bottom: none;
+    }
+  }
+
+  &.is-scrolled {
+    .header__brand h3 { font-size: calc(2.2 * var(--font-size-base)); }
+    .header__brand img { max-height: calc(2 * var(--font-size-base)); }
+    .header__nav ul {
+      height: 0px;
+      overflow: hidden;
+      border-bottom: 0px;
+    }
+  }
+
+  &__search,
+  &__theme,
+  &__member {
+    padding: 5px;
+  }
+
+  &__search,
+  &__theme {
+    padding-left: 0px;
+  }
+
+  &__search,
+  &__theme {
+    display: inline-flex;
+  }
+
+  &__brand {
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img {
+      margin: var(--gap-sm) 0;
+      max-height: calc(1.8 * var(--font-size-base));
+      transition: max-height var(--animation-duration) var(--animation-name);
+
+      @media (--viewport-md) {
+        max-height: calc(2.5 * var(--font-size-base));
+      }
+    }
+
+    h3 { 
+      margin: 0; 
+      font-size: calc(2 * var(--font-size-base));
+      transition: font-size var(--animation-duration) var(--animation-name);
+      line-height: 1.2;
+
+      @media (--viewport-md) {
+        font-size: calc(3 * var(--font-size-base));
+      }
+    }
+  }
+
+  .header__search--open,
+  .header__theme--toggle,
+  .header__member--open {
+    @mixin attention {
+      color: var(--color-primary);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .signin-link,
+  .signout-link {
+    @mixin attention {
+      color: var(--color-primary);
+    }
+  }
+
+  .signup-link,
+  .account-link { 
+    color: var(--color-primary); 
+
+    @media (--viewport-md) {
+      display: inline-block;
+      margin-left: var(--gap-sm);
+      padding: 0.3em var(--gap);
+      color: var(--color-light);
+      background-color: var(--color-primary);
+      border-radius: calc(2*var(--font-size-base));
+
+      @mixin attention {
+        background-color: var(--color-primary-light);
+      }
+    }
+  }
+
+  &__member {
+    padding-right: 0px;
+    padding-bottom: 6px;
+  }
+
+  &__member--open {
+    @media (--viewport-md) {
+      display: none;
+    }
+  }
+
+  &__member--open:hover + .header__member-options {
+    visibility: visible;
+    opacity: 1;
+    transition: var(--animation-duration) var(--animation-name);
+  }
+
+  &__member--open:focus + .header__member-options {
+    visibility: visible;
+    opacity: 1;
+    transition: var(--animation-duration) var(--animation-name);
+  }
+
+  &__member-options {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: all var(--animation-duration-xl) var(--animation-name);
+    right: var(--gap);
+    top: calc(3 * var(--gap));
+    background-color: var(--color-bg-accent-2);
+    border-radius: var(--global-radius);
+    box-shadow: 
+      0px 0px 1px 1px rgba(0,0,0,.025),
+      4px 12px 40px 6px rgba(0,0,0,.1);
+    padding: var(--gap-sm) var(--gap);
+    display: block;
+    font-weight: var(--font-weight-bold);
+
+    @media (--viewport-md) {
+      position: initial;
+      visibility: visible;
+      opacity: 1;
+      top: 0;
+      box-shadow: none;
+      background-color: transparent;
+      padding: 0;
+      text-align: right;
+      transition: none;
+    }
+
+    @mixin attention {
+      visibility:visible;
+      opacity: 1;
+    }
+
+    &:focus-within {
+      visibility:visible;
+      opacity: 1;
+    }
+
+    a { 
+      display: block; 
+      color: var(--color-text-accent-2);
+
+      @media (--viewport-md) {
+        display: inline;
+      }  
+    }
+
+  }
+
+  &__menu {
+    &--open {
+      display: block;
+      width: 25px;
+      height: 25px;
+      overflow: visible;
+      cursor: pointer;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      margin-left: var(--gap-xs);
+
+      @media (--viewport-md) {
+        display: none;
+      }
+
+      @mixin attention {
+        background: transparent;
+
+        span { background-color: var(--color-primary); }
+
+        span:before {
+          width: 60%;
+        }
+
+        span:after {
+          width: 80%;
+        }
+      }
+
+      span {
+        position: relative;
+        display: block;
+        right: 0;
+        height: 2px;
+        width: 25px;
+        background-color: var(--color-text);
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: inherit;
+          display: block;
+          right: 0;
+          height: 2px;
+          transition: width var(--animation-duration) var(--animation-name);
+        }
+
+        &:before {
+          width: 80%;
+          top: calc(-0.5 * var(--gap));
+        }
+
+        &:after {
+          width: 60%;
+          top: calc(0.5 * var(--gap));
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: none;
+
+    @media (--viewport-md) {
+      display: block;
+      overflow: hidden;
+    }
+  }
+
+  &__theme {
+    &--toggle {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    #theme-light {
+      margin-left: -25px;
+    }
+  }
+
+  &__nav {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weight-medium);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    li {
+      transition: box-shadow var(--animation-duration) var(--animation-name);
+      color: var(--color-text-accent-2);
+    }
+
+    li:not(:hover) {
+      box-shadow: none;
+    }
+
+    li a {
+      display: block;
+      padding: var(--gap-sm);
+      cursor: pointer;
+
+      @mixin attention {
+        box-shadow: 0 2px 0px -1px var(--color-primary);
+        transition: box-shadow var(--animation-duration) var(--animation-name);
+      }
+    }
+
+    .nav-current {
+      color: var(--color-primary);
+      box-shadow: 0 2px 0px -1px var(--color-primary);
+    }
+
+    .nav-current:not(:hover) {
+      box-shadow: 0 2px 0px -1px var(--color-primary);
+    }
+    
+  }
+
+  &__search--open,
+  &__theme--toggle,
+  &__member--open {
+    cursor: pointer;
+    color: var(--color-text-accent-2);
+  }
+}
+
+#progress {
+  --scroll: 0%;
+  background: linear-gradient(to right, var(--color-primary) var(--scroll),transparent 0);
+  position: relative;
+  width: 100%;
+  height: 3px;
+  z-index: 10;
+}

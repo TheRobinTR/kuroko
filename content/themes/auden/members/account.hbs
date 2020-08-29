@@ -1,0 +1,135 @@
+{{!< ../default}}
+
+<div class="container-fluid wrapper">
+  <div class="account">
+    {{#if @member.paid}}
+
+      {{!-- Logged in, paying member: Show account info --}}
+      <div class="account-box">
+        <h1 class="account-box__title">{{t "Your account"}}</h1>
+        <p>{{t "Currently, you have an active account to all areas. You're all set, but if you need any help, get in touch with us and we'd be happy to help."}}</p>
+        {{#foreach @member.subscriptions}}
+        <div class="account-detail">
+          <div class="account-detail__label">
+            <div class="account-detail__name">{{t "Name"}}</div>
+            <div class="account-detail__email">{{t "Email"}}</div>
+            <div class="account-detail__plan">{{t "Your plan"}}</div>
+            <div class="account-detail__status">{{t "Status"}}</div>
+            <div class="account-detail__valid">{{t "Valid until"}}</div>
+          </div>
+          <div class="account-detail__value">
+            <div class="account-detail__name">{{@member.name}}</div>
+            <div class="account-detail__email">{{@member.email}}</div>
+            <div class="account-detail__plan">{{plan.currency_symbol}}{{price plan.amount}} {{plan.nickname}}</div>
+            <div class="account-detail__status">{{status}}</div>
+            <div class="account-detail__valid">{{date current_period_end format="MMMM DD, YYYY"}}</div> 
+          </div>
+        </div>
+        {{/foreach}}
+
+        <div class="account__edit m-t-lg">
+          <a class="btn btn--brand btn--bordered btn--xs" href="javascript:"
+              data-members-edit-billing
+              data-members-success="/"
+              data-members-cancel="/"
+            >Edit billing info</a>
+        </div>
+      </div>
+
+      {{#get "posts" limit="all" include="authors,tags" }}
+      <h5 class="member-posts__title">{{t "Members only content"}}</h5>
+      {{> wave}}
+      <div class="row">
+        {{#foreach posts visibility="paid"}}
+          <div class="col-xs-12 col-md-6 col-lg-4 post-wrap">
+            {{> post-card class="col"}}
+          </div>
+        {{/foreach}}
+      </div>
+      {{/get}}
+
+    {{else if @member}}
+
+      {{!-- Logged in, not paying: Link to checkout --}}
+      <div class="account-box">
+        <h1 class="account-box__title">{{t "Your account"}}</h1>
+        <p>{{t "Currently, you are subscribed to free updates. Unlock full access to see the entire library of members-only content & updates by subscribing to a paid plan."}}
+        </p>
+        <div class="account-detail">
+          <div class="account-detail__label">
+            <div class="account-detail__email">{{t "Email"}}</div>
+            <div class="account-detail__plan">{{t "Your plan"}}</div>
+          </div>
+          <div class="account-detail__value">
+            <div class="account-detail__email">{{@member.email}}</div>
+            <div class="account-detail__plan">{{t "Free"}}</div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Logged in, not paying: Check out --}}
+      <div class="checkout__form">
+        <h5 class="checkout__title">{{t "Choose your plan"}}</h5>
+        {{> wave}}
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2 m-b-lg">
+            <div class="checkout-plan">
+              <header class="checkout-plan__header">
+                <h3 class="checkout-plan__title">{{t "Monthly"}}</h3>
+                <div class="checkout-plan__price">
+                  <sup>{{@price.currency_symbol}}</sup><strong>{{@price.monthly}}</strong>/{{t "m"}}
+                </div>
+              </header>
+              <div class="checkout-plan__content">
+                <ul class="list--unstyled">
+                  <li>{{>icon name="check" size="xs"}}{{t "Full access to all private posts"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular updates with new content"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Support independent publishing"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Simple, secure card payment"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular newsletters"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "No advertisement"}}</li>
+                </ul>
+                <a class="btn btn--brand btn--bordered btn--sm" 
+                  href="javascript:void(0)" data-members-plan="Monthly">
+                  {{t "Subscribe now"}}
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 m-b-lg">
+            <div class="checkout-plan">
+              <header class="checkout-plan__header">
+                <h3 class="checkout-plan__title">{{t "Yearly"}}</h3>
+                <div class="checkout-plan__price">
+                  <sup>{{@price.currency_symbol}}</sup><strong>{{@price.yearly}}</strong>/{{t "y"}}
+                </div>
+              </header>
+              <div class="checkout-plan__content">
+                <ul class="list--unstyled">
+                  <li>{{>icon name="check" size="xs"}}{{t "Full access to all private posts"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular updates with new content"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Support independent publishing"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Simple, secure card payment"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular newsletters"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "No advertisement"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "One easy payment instead of 12!"}}</li>
+                </ul>
+                <a class="btn btn--brand btn--bordered btn--sm" 
+                  href="javascript:void(0)" data-members-plan="Yearly">
+                  {{t "Subscribe now"}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{else}}
+
+      {{!-- Not logged in: Redirect to signin --}}
+      <script>window.location = '{{@site.url}}/signin/';</script>
+
+    {{/if}}
+  </div>
+</div>

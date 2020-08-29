@@ -1,0 +1,40 @@
+/* Dark theme */
+[data-color-scheme="dark"] {
+  --color-text: var(--color-light);
+  --color-text-accent-1: var(--color-light-accent);
+  --color-text-accent-2: var(--color-grey-lighter);
+  --color-text-accent-3: var(--color-grey-light);
+  --color-text-reverse:  var(--color-dark);
+  --color-bg: var(--color-dark);  
+  --color-bg-accent-1: var(--color-dark-accent); 
+  --color-bg-accent-2: var(--color-dark-accent-2); 
+  --color-bg-accent-3: var(--color-grey-darker);
+  --color-bg-reverse: var(--color-light);
+  --color-border: var(--color-border-dark);
+
+  #theme-light {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .post-card,
+  .post-hero {
+    &__author-image,
+    &__author-icon {
+      @mixin attention {
+        box-shadow: 
+          0 0 1px 3px var(--color-secondary),
+          0 0 1px 6px color(var(--color-secondary) blend(var(--color-dark) 50%));
+      }
+    }
+  }
+
+  .author-card {
+    &__image {
+      @mixin attention {
+        box-shadow: 
+          0 0 0 5px color(var(--color-secondary) blend(var(--color-dark) 50%));
+      }
+    }
+  }
+}

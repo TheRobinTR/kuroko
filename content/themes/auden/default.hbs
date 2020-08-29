@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}" data-color-scheme="light">
+  <head>
+    {{!-- Document Settings --}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {{!-- Page Meta --}}
+    <title>{{meta_title}}</title>
+
+    {{!-- Mobile Meta --}}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+
+    {{!-- PWA --}}
+    <link rel="manifest" href="{{asset 'manifest.webmanifest'}}">
+    <meta name="theme-color" content="#e50b4f">
+    <link rel="apple-touch-icon" href="{{asset 'icon-192x192.png'}}">
+
+    {{!-- Preloading --}}
+    <link rel="preload" href="{{asset 'js/font_1703430_yss14kpmd08.js'}}" as="script">
+    <link rel="preload" href="{{asset 'dist/app.min.js'}}" as="script">
+    <link rel="preload" href="{{asset 'dist/app.min.css'}}" as="style">
+
+    {{!-- <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" as="font" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" as="font" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" as="font" onload="this.onload=null;this.rel='stylesheet'"> --}}
+    
+    {{!-- No Js --}}
+    <noscript>
+      {{!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap"> --}}
+    </noscript> 
+	<script type="text/javascript" src="http://cdn.repository.webfont.com/wwwroot/js/wf/youziku.api.min.js"></script>
+	<script type="text/javascript">
+	$webfont.load("body", "1325028fb0364aa1b7b75d2db63de773", "HiraginoGBW3");
+	/*$webfont.load("#id1,.class1,h1", "1325028fb0364aa1b7b75d2db63de773", "HiraginoGBW3");*/
+	/*．．．*/
+	$webfont.draw();
+	</script>
+
+    {{!-- Theme Configuration --}}
+    {{> theme-config}}
+
+    {{!-- Styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset 'dist/app.min.css'}}" />
+
+    {{!-- Theme scripts --}}
+    <script async defer src="{{asset 'dist/app.min.js'}}"></script>
+
+    <!--cssential--><style></style><!--/cssential-->
+
+    {{!-- Ghost outputs important style and meta data with this tag --}}
+    {{ghost_head}}
+  </head>
+  <body class="{{body_class}}">
+    {{!-- Include Search View --}}
+    {{> search}}
+
+    {{!-- Include Menu --}}
+    {{> menu}}
+
+    {{!-- The blog navigation links --}}
+    {{^is "signin, signup"}}
+      {{> header}}
+    {{/is}}
+
+    <main class="main">
+      {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+      {{{body}}}
+    </main>
+
+    {{!-- The footer at the very bottom --}}
+    {{^is "signin, signup"}}
+      {{> footer}}
+      <div class="scroll-to-top">{{> icon name="arrow-up"}}</div>
+    {{/is}}
+
+    {{> gradient}}
+
+    {{!-- Service Worker for PWA --}}
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+	<script src="https://unpkg.com/@tryghost/content-api@1.4.4/umd/content-api.min.js"></script>
+	<script type="text/javascript" src="{{asset "js/ghost-search.min.js"}}"></script>
+	<script>
+		let ghostSearch = new GhostSearch({
+			key: '55c5bfbb78aa5cca91e80903cf',
+			url: 'http://www.kuroko.cool',
+			options: {
+				keys: [
+					'title',
+					'plaintext'
+				],
+			},
+			api: {
+				resource: 'posts',
+				parameters: { 
+					fields: ['title', 'slug', 'plaintext'],
+					formats: 'plaintext',
+				},
+			},
+			on: {
+				afterDisplay: function(results){
+					if (results.total == 0 && document.getElementById('ghost-search-field').value != '') {
+						let resultsElement = document.getElementById('ghost-search-results');
+						let e = document.createElement('p');
+						e.innerHTML = '抱歉，没找到你搜的东西';
+						resultsElement.appendChild(e.firstChild);
+					};
+				}
+			},
+			template: function(result) {
+				let url = 'http://www.kuroko.cool';
+				return '<a href="' + url + '/' + result.slug + '">' + result.title + '</a>';  
+			}
+		})
+	</script>
+
+    {{!-- Ghost outputs important scripts and data with this tag --}}
+    {{ghost_foot}}
+  </body>
+</html>

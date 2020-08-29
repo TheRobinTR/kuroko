@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      {{> post-hero}}
+    </div>
+    <div class="col-xs-12 col-lg-8 col-xl-9">
+      <article class="{{post_class}} post-access-{{visibility}} has-sidebar">
+        {{#if access}}
+          {{!-- {{> social-share}} --}}
+        {{/if}}
+        <div class="post__content">
+          {{#if access}}
+            {{content}}
+          {{else}}
+            {{> post-access-cta visibility=visibility}}
+          {{/if}}
+        </div>
+      </article>
+    </div>
+    <div class="col-xs-12 col-lg-4 col-xl-3 has-sidebar">
+      {{> sidebar}}
+    </div>
+  </div>
+</div>
+
+{{!-- Related posts --}}
+{{> related-posts}}
+{{/post}}

@@ -1,0 +1,42 @@
+.archive-post {
+  display: flex;
+  position: relative;
+  margin-bottom: var(--gap);
+  background-color: var(--color-bg-accent-1);
+  border-radius: var(--global-radius);
+
+  @mixin attention {
+    box-shadow: 0 0 0 1px var(--color-primary);
+
+    .archive-post__title {
+      color: var(--color-primary);
+    }
+  }
+
+  &__content {
+    padding: var(--gap);
+    flex: 1;
+  }
+
+  &__title {
+    margin-bottom: var(--gap-xs);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-text-accent-2);
+  }
+
+  &__date {
+    margin-bottom: 0;
+    font-size: calc(0.9 * var(--font-size-base));
+    color: var(--color-text-accent-3);
+  }
+
+  &__image {
+    height: calc(5 * var(--gap));
+    width: calc(5 * var(--gap));
+    object-fit: cover;
+    object-position: center;
+    margin: var(--gap-sm);
+    border-radius: var(--global-radius);
+  }
+}

@@ -1,0 +1,77 @@
+{{!-- Post Card --}}
+<div class="post-card{{#if class}} {{class}}{{/if}}{{^if feature_image}} no-img{{/if}}{{#if featured}} featured{{/if}}">
+  <div class="special-bg"></div>
+  {{#if feature_image}}
+    <a class="post-card__image" href="{{url}}" title="{{title}}" aria-label="{{title}}">
+      <img class="lazyload"
+          data-srcset="{{img_url feature_image size="s"}} 300w,
+                  {{img_url feature_image size="m"}} 600w,
+                  {{img_url feature_image size="l"}} 1000w,
+                  {{img_url feature_image size="xl"}} 2000w"
+          data-sizes="(max-width: 1000px) 50vw, 700px"
+          data-src="{{img_url feature_image size="l"}}"
+          src="{{asset 'images/img-placeholder-md.jpg'}}"
+          alt="{{title}}"
+      />
+    </a>
+  {{/if}}
+
+  <div class="post-card__content">
+    <div class="post-card__header">
+      {{#if tags}}
+        {{#primary_tag}}
+          <a class="tag-{{slug}} post-card__tag" href="{{url}}" 
+          title="{{name}}" aria-label="{{name}}s">{{name}}</a>
+        {{/primary_tag}}
+      {{/if}}
+      <div class="post-card__tag {{visibility}}">members</div>
+
+      {{#if featured}}
+        <div class="post-card__featured">{{> icon name="star" size="sm"}}</div>
+      {{/if}}
+    </div>
+
+    <h2 class="post-card__title">
+      <a href="{{url}}" title="{{title}}" aria-label="{{title}}">{{title}}</a>
+    </h2>
+
+    <div class="post-card__details">
+      <div class="post-card__authors is-flex {{#has author="count:>1"}}multi {{count}}{{/has}}">
+        {{#foreach authors}}
+          <div class="post-card__author {{@number}}">
+            {{#if profile_image}}
+              <a href="{{url}}" class="post-card__author-image" aria-label="{{name}}">
+                <img 
+                  class="lazyload" 
+                  data-src="{{img_url profile_image size="xs"}}" 
+                  alt="{{name}}" 
+                  src="{{img_url profile_image size="xxs"}}" 
+                />
+              </a>
+            {{else}}
+              <a href="{{url}}" class="post-card__author-icon" aria-label="{{name}}">
+                {{>icon name="user" size=""}}
+              </a>
+            {{/if}}
+          </div>
+        {{/foreach}}
+      </div>
+
+      <div class="post-card__info">
+        <div class="post-card__author-names">
+          {{#authors separator=", "}}{{/authors}}
+        </div>
+
+        <time datetime="{{date format='YYYY-MM-DD'}}" class="post-card__date">
+          {{date published_at timeago=""}}
+        </time>
+      </div>
+    </div>
+
+    {{#unless feature_image}}
+      <div class="post-card__excerpt">
+        {{excerpt words="30"}}&hellip;
+      </div>
+    {{/unless}}
+  </div>
+</div>

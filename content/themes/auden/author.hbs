@@ -1,0 +1,77 @@
+{{!< default}}
+<div class="container-fluid wrapper">
+  {{!-- Everything inside the #author tags pulls data from the author --}}
+  {{#author}}
+  <section class="author-header">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="author-card{{^if profile_image}} no-img{{/if}}">
+          {{!-- Author profile image --}}
+          {{#if profile_image}}
+            <img class="lazyload author-card__image" 
+              data-srcset="{{img_url profile_image size="xs"}} 100w,
+                {{img_url profile_image size="s"}} 300w,
+                {{img_url profile_image size="m"}} 600w"
+              data-sizes="(max-width: 800px) 25vw, 400px"
+              data-src="{{img_url profile_image size="s"}}" alt="{{name}}"
+              src="{{asset 'images/img-placeholder-square.jpg'}}" />
+          {{/if}}
+
+          <div class="author-card__content">
+            {{!-- Author Name --}}
+            <h1 class="author-card__title">{{name}}</h1>
+
+            <div class="author-card__bio">{{bio}}</div>
+
+            <div class="author-card__counter">
+              {{plural ../pagination.total empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}
+            </div>
+
+            {{!-- Author social links --}}
+            <div class="author-card__social">
+              {{#if twitter}}
+                <a class="author-card__social-link" href="{{twitter_url}}" target="_blank" title="Twitter" aria-label="Twitter">
+                  {{> icon name="twitter" class="icon--filled"}}
+                </a>
+              {{/if}}
+              {{#if facebook}}
+                <a class="author-card__social-link" href="{{facebook_url}}" target="_blank" title="Facebook" aria-label="Facebook">
+                  {{> icon name="facebook" class="icon--filled"}}
+                </a>
+              {{/if}}
+              {{!-- Author website --}}
+              {{#if website}}
+                <a class="author-card__social-link" href="{{website}}" target="_blank" title="Website" aria-label="Website">
+                  {{> icon name="link"}}
+                </a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/author}}
+
+  {{!-- The main content/post by the author --}}
+  {{#if posts}}
+    <div class="row">
+      <div class="col-xs-12">
+        <section class="section all-posts">
+          <div class="row posts">
+            {{#foreach posts  visibility="all"}}
+              <div class="col-xs-12 col-md-6 col-lg-4 post-wrap">
+                {{> post-card class="col author"}}
+              </div>
+            {{/foreach}}
+          </div>
+          <div class="row">
+            <div class="col-xs-12 center-xs">
+              <button id="load-more-posts" class="btn btn--wide btn--brand btn--bordered">{{t "Load more posts"}}</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  {{/if}}
+</div>

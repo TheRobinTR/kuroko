@@ -1,0 +1,25 @@
+{{!-- Blog search --}}
+<div class="search" id="search">
+  <div class="search__header">
+    <form action="/" method="get" class="search__form" id="search-form">
+      <input type="text" id="ghost-search-field" class="search__input" 
+        title="{{t "Search"}}" placeholder="{{t "Search"}}" autocomplete="off" required/>
+      <div class="search__icon">
+        {{>icon name="search" size="lg"}}
+      </div>
+    </form>
+    <a tabindex="0" class="search--close" id="search-close">
+      {{>icon name="x" size="lg"}}
+    </a>
+  </div>
+  <div class="search-helper">
+    {{#get "tags" limit="8" include="count.posts" order="count.posts desc"}}
+      {{#foreach tags}}
+        <div class="search__tag js-search-tag" tabindex="0" title="{{name}}">{{name}}</div>
+      {{/foreach}}
+    {{/get}}
+  </div>
+  <div class="search-content">
+    <div class="search-result" id="ghost-search-results"></div>
+  </div>
+</div>

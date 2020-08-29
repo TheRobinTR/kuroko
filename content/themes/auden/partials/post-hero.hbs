@@ -1,0 +1,64 @@
+<div class="post-hero{{#unless feature_image}} no-img{{/unless}}{{#if featured}} featured{{/if}}">
+  {{!-- Post image --}}
+  {{#if feature_image}}
+    <figure class="post-hero__image">
+      <img
+        class="lazyload"
+        data-srcset="{{img_url feature_image size="s"}} 300w,
+                {{img_url feature_image size="m"}} 600w,
+                {{img_url feature_image size="l"}} 1000w,
+                {{img_url feature_image size="xl"}} 2000w"
+        data-sizes="(max-width: 800px) 50vw,
+                (max-width: 1170px) 60vw,
+                1400px"
+        data-src="{{img_url feature_image size="xl"}}"
+        src="{{asset 'images/img-placeholder-md.jpg'}}"
+        alt="{{title}}"
+      />
+    </figure>
+  {{/if}}
+  <div class="post-hero__content">
+    <div class="post-hero__header">
+      {{#foreach tags to="3"}}
+          <a class="tag-{{slug}} post-hero__tag" href="{{url}}" 
+          title="{{name}}" aria-label="{{name}}s">{{name}}</a>
+      {{/foreach}}
+    </div>
+
+    <h1 class="post-hero__title">{{title}}</h1>
+
+    <div class="post-hero__details">
+      <div class="post-hero__authors is-flex {{#has author="count:>1"}}multi{{/has}}">
+        {{#foreach authors}}
+          <div class="post-hero__author">
+            {{#if profile_image}}
+              <a href="{{url}}" class="post-hero__author-image" aria-label="{{name}}">
+                <img 
+                  class="lazyload" 
+                  data-src="{{img_url profile_image}}" 
+                  alt="{{name}}" 
+                  src="{{asset 'images/img-placeholder-square.jpg'}}"
+                  />
+              </a>
+            {{else}}
+              <a href="{{url}}" class="post-hero__author-icon" aria-label="{{name}}">
+                {{>icon name="user" size=""}}
+              </a>
+            {{/if}}
+            {{!-- <div class="post-card__author-tooltip">{{name}}</div> --}}
+          </div>
+        {{/foreach}}
+      </div>
+
+      <div class="post-hero__info">
+        <div class="post-hero__author-names">
+          {{#authors separator=", "}}{{/authors}}
+        </div>
+
+        <time datetime="{{date format='YYYY-MM-DD'}}" class="post-hero__date">
+          {{date published_at timeago=""}}
+        </time>
+      </div>
+    </div>
+  </div>
+</div>

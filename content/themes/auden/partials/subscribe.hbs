@@ -1,0 +1,30 @@
+<div class="subscribe">
+  <h5 class="subscribe__title">{{t "Subscribe"}}</h5>
+  {{> wave}}
+
+  <div class="subscribe__content">
+    <div class="subscribe__descr" id="post-subscribe">{{t "Join the newsletter to get the latest updates."}}</div>
+    <form data-members-form="subscribe">
+      <input data-members-email aria-labelledby="post-subscribe" type="email" placeholder="{{t "Your email address"}}" required/>
+      <button class="btn--brand" type="submit" title="{{t "Subscribe"}}" aria-label="{{t "Subscribe"}}">{{>icon name="send"}}</button>
+      <div class="message message-success">
+        <div class="message__header">
+          <div class="message__type">{{t "Success"}}</div> 
+          <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+        </div>
+        <div class="message__content">
+          {{t "Great! Check your inbox and click the link"}}
+        </div>
+      </div>
+      <div class="message message-error">
+        <div class="message__header">
+          <div class="message__type">{{t "Error"}}</div> 
+          <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+        </div>
+        <div class="message__content">
+          {{t "Please enter a valid email address!"}}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

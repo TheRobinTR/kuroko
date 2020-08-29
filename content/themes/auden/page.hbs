@@ -1,0 +1,25 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page__header">
+        <h1 class="page__title">{{title}}</h1>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <article class="{{post_class}} post-access-{{visibility}}">
+        <div class="post__content">
+          {{#if access}}
+            {{content}}
+          {{else}}
+            {{> post-access-cta visibility=visibility}}
+          {{/if}}
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+{{/post}}

@@ -1,0 +1,69 @@
+{{!< ../default}}
+<div class="signup{{#if @member}} is-member{{/if}}">
+
+  {{#if @member.paid}}
+
+    {{!-- Logged in, paying member: Redirect home --}}
+    <script>window.location = '{{@site.url}}';</script>
+
+  {{else if @member}}
+
+    {{!-- Logged in, paying member: Redirect home --}}
+    <script>window.location = '/account';</script>
+    
+  {{else}}
+
+    <div class="member-cover">
+      {{#if @site.cover_image}}
+        <img class="lazyload site-cover" 
+          data-srcset="{{img_url @site.cover_image size="s"}} 300w,
+            {{img_url @site.cover_image size="l"}} 1000w"
+          data-sizes="(max-width: 800px) 50vw,
+            1000px"
+          data-src="{{img_url @site.cover_image size="l"}}"
+          src="{{asset 'images/img-placeholder-md.jpg'}}"
+          alt="{{@site.title}}"/>
+      {{/if}}
+      <div class="site-description">{{@site.description}}</div>
+    </div>
+
+    {{!-- Not logged in: Sign up --}}
+    <form class="signup-form" data-members-form="signup">
+      <div class="member-navigation">
+        <a class="link-home js-link-home" href="/">
+          {{> icon name="home" }}
+        </a>
+        <a class="link-back js-link-back" href="javascript:history.back()">
+          {{> icon name="arrow-left" }}
+        </a>
+      </div>
+      <h1 class="signup-title">{{t "Signup to"}} {{@site.title}}</h1>
+      <p>{{@site.description}}</p>
+      <div class="signup-box m-b-lg">
+        <input data-members-email type="email" placeholder="{{t "Type your email..."}}" autocomplete="off" required/>
+        <button class="btn btn--brand" type="submit">{{t "Continue"}}</button>
+      </div>
+      <p><small>{{t "Already have an account?"}} <a href="/signin/">{{t "Sign in"}}</a></small></p>
+      <div class="message message-success">
+        <div class="message__header">
+          <div class="message__type">{{t "Success"}}</div> 
+          <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+        </div>
+        <div class="message__content">
+          {{t "Great! Check your inbox and click the link to confirm your subscription"}}
+        </div>
+      </div>
+      <div class="message message-error">
+        <div class="message__header">
+          <div class="message__type">{{t "Error"}}</div> 
+          <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+        </div>
+        <div class="message__content">
+          {{t "Please enter a valid email address!"}}
+        </div>
+      </div>
+    </form>
+
+  {{/if}}
+
+</div>

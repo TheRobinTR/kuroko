@@ -1,0 +1,33 @@
+{{!-- Post/Page share icons --}}
+<div class="social-share">
+  {{!-- twitter --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="twitter" data-title="{{encode title}}" data-url="{{url absolute='true'}}"
+      title="Share on Twitter" aria-label="{{t "Share on"}} Twitter">
+    {{>icon name="twitter" size="sm"}}
+  </a>
+  {{!-- facebook --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="facebook" data-title="{{encode title}}" data-url="{{url absolute='true'}}"
+      title="Share on Facebook" aria-label="{{t "Share on"}} Facebook">
+    {{>icon name="facebook" size="sm"}}
+  </a>
+  {{!-- Linkedin --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="linkedin" data-title="{{encode title}}" data-url="{{url absolute='true'}}"
+      title="Share on Linkedin" aria-label="{{t "Share on"}} Linkedin">
+    {{>icon name="linkedin" size="sm"}}
+  </a>
+  {{!-- Mail --}}
+  <a href="mailto:?subject={{encode title}}&body={{url absolute='true'}}"
+      class="social-share__item js-share" tabindex="0"
+      data-type="email" data-title="{{encode title}}" data-url="{{url absolute='true'}}"
+      title="Share by email" aria-label="{{t "Share by email"}}">
+    {{>icon name="mail" size="sm"}}
+  </a>
+  <a class="copy-link js-share js-copy-link" tabindex="0"
+    data-type="copy" data-title="{{encode title}}" data-url="{{url absolute='true'}}"
+    title="{{t "Copy to clipboard"}}" data-label="Copied!" aria-label="{{t "Copy to clipboard"}}">
+    {{>icon name="copy" size="sm"}}
+  </a>
+</div>

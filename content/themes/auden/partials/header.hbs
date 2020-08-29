@@ -1,0 +1,92 @@
+{{!-- Site header --}}
+<header class="header">
+  {{#is "post"}}<div id="progress"></div>{{/is}}
+  <div class="header__top">
+    <div class="container-fluid wrapper">
+      <div class="row">
+        <div class="col-xs-3 col-md-4 middle-xs is-flex">
+          {{#if @labs.members}}
+          {{!-- Search --}}
+          <div class="header__search">
+            <a class="header__search--open" id="search-open" tabindex="0" 
+               title="{{t "Search"}}" aria-label="{{t "Search"}}">
+              {{>icon name="search" size=""}}
+            </a>
+          </div>
+          {{/if}}
+
+          <div class="header__theme">
+            <a class="header__theme--toggle" id="theme-dark" tabindex="0" 
+              title="{{t "Dark Theme"}}" aria-label="{{t "Dark Theme"}}">
+              {{>icon name="moon" size=""}}
+            </a>
+            <a class="header__theme--toggle" id="theme-light" tabindex="0" 
+              title="{{t "Light Theme"}}" aria-label="{{t "Light Theme"}}">
+              {{>icon name="sun" size=""}}
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-md-4 center-xs">
+          {{!-- Blog logo or name --}}
+          <div class="header__brand">
+            <a href="{{@site.url}}">
+              {{#if @site.logo}}
+                <img class="header__logo" src="{{@site.logo}}" alt="{{@site.title}}">
+              {{else}}
+                <h3 class="header__title">{{@site.title}}</h3>
+              {{/if}}
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-xs-3 col-md-4 end-xs middle-xs is-flex">
+          {{!-- Member Links --}}
+          {{#if @labs.members}}
+            <div class="header__member">
+              <a class="header__member--open" tabindex="0" aria-label="{{t "Subscribe/Log in"}}">
+                {{>icon name="user" size=""}}
+              </a>
+
+              <div class="header__member-options">
+                {{#if @member}}
+                  <a class="signout-link" href="#signout" data-members-signout>{{t "Log out"}}</a>
+                  <a class="account-link" href="/account/">{{t "Account"}}</a>
+                {{else}}
+                  <a class="signin-link" href="/signin/">{{t "Log in"}}</a>
+                  <a class="signup-link header-cta" href="/signup/">{{t "Subscribe"}}</a>
+                {{/if}}
+              </div>
+            </div>
+          {{else}}
+            {{!-- Search --}}
+            <div class="header__search">
+              <a class="header__search--open" id="search-open" tabindex="0" 
+                title="{{t "Search"}}" aria-label="{{t "Search"}}">
+                {{>icon name="search" size=""}}
+              </a>
+            </div>
+          {{/if}}
+
+          {{!-- Menu Button --}}
+          <button id="menu-open" class="header__menu--open hamburger" 
+            type="button" title="{{t "Menu"}}" aria-label="{{t "Menu"}}">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- Menu --}}
+  <div class="header__bottom">
+    <div class="container-fluid wrapper">
+      <div class="row">
+        {{!-- Blog navigation --}}
+        <nav class="col-xs header__nav">
+          {{navigation}}
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

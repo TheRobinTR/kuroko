@@ -1,0 +1,32 @@
+<section class="comments">
+  {{#if @labs.members}}
+    <span class="is-hidden" id="cove-count"></span>
+    <div id="cove" class="m-b color-text-acc2"></div>
+
+    {{#if @member}}
+      <div>{{@member.email}} · <a href="javascript:" data-members-signout>{{t "Log out"}}</a></div>
+    {{else}}
+      <p class="m-b color-text-acc2">{{t "Join the conversation."}}</p>
+      <form data-members-form="signin" id="cove-login" class="is-flex">
+        <input class="cove-input flex-1 m-0 m-r" data-members-email type="email" required="true" placeholder="your@email.com" />
+        <button type="submit" class="cove-button">
+          <span>{{t "Send login link"}}</span>
+          <span class="button-spinner" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" display="block"><circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="12" r="39" stroke-dasharray="183.7831702350029 63.261056745000964" transform="rotate(197.992 50 50)"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/></circle></svg></span>
+        </button>
+        <span class="signin-success m-t" style="display:none">{{t "Great! Check your inbox and click the link to complete signin"}}</span>
+        <span class="signin-error m-t" style="display:none">{{t "Please enter a valid email address!"}}</span>
+      </form>
+    {{/if}}
+
+    <script>
+      const Cove = {
+        publication: "c0ac541fdb2a0aa36e25a2dff1fc3ea7",
+        contentId: "{{id}}",
+        memberId: "{{@member.uuid}}",
+        memberEmail: "{{@member.email}}"
+      }
+    </script>
+  {{/if}}
+
+  <script src="https://cdn.cove.chat/comments.js" async></script>
+</section>

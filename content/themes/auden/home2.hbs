@@ -1,0 +1,39 @@
+{{!< default}}
+
+{{#get "posts" include="authors,tags" limit=@config.posts_per_page}}
+<div class="container-fluid wrapper">
+  <section class="section latest-post">
+    {{#foreach posts to="1" visibility="all"}}
+      <div class="row">
+        <div class="col-xs">
+          {{> post-card class="post-card--special" lazy=false }}
+        </div>
+      </div>
+    {{/foreach}}
+  </section>
+
+  <div class="row">
+    <div class="col-xs-12 col-lg-8 col-xl-9">
+      <section class="section all-posts">
+        <div class="row posts">
+          {{#foreach posts from="2" visibility="all"}}
+            <div class="col-xs-12 post-wrap">
+              {{> post-card}}
+            </div>
+          {{/foreach}}
+        </div>
+        <div class="row">
+          <div class="col-xs-12 center-xs">
+            <button id="load-more-posts" class="btn btn--wide btn--brand btn--bordered">
+              {{t "Load more posts"}}
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="col-xs col-lg-4 col-xl-3 has-sidebar">
+      {{> sidebar}}
+    </div>
+  </div>
+</div>
+{{/get}}

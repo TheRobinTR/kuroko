@@ -1,0 +1,39 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page__header">
+        <h1 class="page__title">{{title}}</h1>
+      </div>
+    </div>
+  </div>
+  {{#get "posts" limit="all" order="published_at desc"}}
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+      <div class="archive-content m-b-lg">
+        {{#foreach posts}}
+          <a href="{{url}}" class="archive-post">
+            <div class="archive-post__content">
+              <h3 class="archive-post__title">{{title}}</h3>
+              <time datetime="{{date published_at format="YYYY-MM-DD"}}" class="archive-post__date">
+                {{date published_at format="MMM Do YYYY"}}
+              </time>
+            </div>
+            {{#if feature_image}}
+              <img class="lazyload archive-post__image"
+                  data-src="{{img_url feature_image size="s"}}"
+                  src="{{asset 'images/img-placeholder-square.jpg'}}"
+                  alt="{{title}}"
+              />
+            {{/if}}
+          </a>
+        {{/foreach}}
+      </div>
+    </div>
+  </div>
+  {{/get}}
+</div>
+{{/post}}

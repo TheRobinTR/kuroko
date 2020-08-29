@@ -1,0 +1,41 @@
+{{!-- Site footer --}}
+<footer class="footer">
+  <div class="container-fluid wrapper">
+    <div class="footer__top">
+      <div class="row">
+        <div class="col-xs-12 {{#if @site.secondary_navigation}}col-md-3{{else}}col-md-4{{/if}}">
+          <h5 class="m-b-sm">{{t "Navigation"}}</h5>
+          {{navigation}}
+        </div>
+        {{#if @site.secondary_navigation}}
+          <div class="col-xs-12 col-md-3">
+            <h5 class="m-b-sm">{{t "Useful links"}}</h5>
+            {{navigation type="secondary"}}
+          </div>
+        {{/if}}
+        <div class="col-xs-12 {{#if @site.secondary_navigation}}col-md-3{{else}}col-md-4{{/if}}">
+          <h5 class="m-b-sm">{{t "Social Media"}}</h5>
+          {{> social-media}}
+        </div>
+        <div class="col-xs-12 {{#if @site.secondary_navigation}}col-md-3{{else}}col-md-4{{/if}}">
+          <h5 class="m-b-sm">{{@site.title}}</h5>
+          <div class="m-b" id="footer-subscribe">{{@site.description}}</div>
+          {{!-- <form class="subscribe-form" data-members-form="subscribe">
+            <input aria-labelledby="footer-subscribe" data-members-email type="email" placeholder="email@example.com" required/>
+            <button type="submit" title="{{t "Subscribe"}}" aria-label="{{t "Subscribe"}}">
+              {{>icon name="arrow-right"}}
+            </button>
+            <p data-members-error><!-- error message will appear here --></p>
+          </form> --}}
+        </div>
+      </div>
+    </div>
+    {{!-- Copyright --}}
+    <div class="footer__bottom">
+      <div>&copy; {{date format="YYYY"}}&nbsp;<a href="{{@site.url}}">{{@site.title}}</a>.</div>
+      <div>
+		&nbsp;&nbsp;<a href="http://www.beian.miit.gov.cn/">浙ICP备20007789</a>
+      </div>
+    </div>
+  </div>
+</footer>

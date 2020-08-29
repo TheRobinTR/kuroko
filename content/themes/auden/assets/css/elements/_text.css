@@ -1,0 +1,87 @@
+/* Paragraph */
+p {
+  font-size: var(--font-size-base);
+  line-height: calc(0.1 + var(--line-height-base));
+  margin: 0 0 var(--gap-lg);
+}
+
+/* Links */
+a {
+  color: var(--color-link);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+/* Quote */
+blockquote {
+  margin: 0;
+  margin-bottom: var(--gap-lg);
+  font-family: var(--font-family-serif);
+  font-size: calc(1.1 * var(--font-size-base));
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg-accent-1);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  border-top-right-radius: var(--global-radius);
+  border-bottom-right-radius: var(--global-radius);
+  padding: var(--gap-lg);
+  text-align: center;
+  position: relative;
+  width: 100%;
+
+  &.important-info {
+    &:before {
+      content: "";
+    }
+  }
+
+  &:before {
+    content: '‟';
+    position: absolute;
+    top: 0;
+    text-align: center;
+    left: 0;
+    right: 0;
+    font-family: sans-serif;
+    font-weight: var(--font-weight-extra-bold);
+    font-size: 6rem;
+    line-height: 3rem;
+    color: var(--color-primary);
+  }
+
+  &+ figcaption cite {
+    display: block;
+    font-size: inherit;
+    text-align: right;
+    font-style: italic;
+  }
+
+  cite { font-weight: var(--font-weight-bold); }
+
+  p {
+    margin: 0;
+  }
+}
+
+.important-info {
+  padding: var(--gap-lg);
+  background-color: var(--color-bg-accent-1);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  border-top-right-radius: var(--global-radius);
+  border-bottom-right-radius: var(--global-radius);
+}
+
+/* Misc */
+em, i, .italic {
+	font-style: italic;
+}
+
+strong, b, .bold {
+  font-weight: var(--font-weight-bold);
+}
+
+small, .small {
+  font-size: 80%;
+}

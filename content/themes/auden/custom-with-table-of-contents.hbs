@@ -1,0 +1,56 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      {{> post-hero}}
+    </div>
+	<div class="col-xs-12 col-lg-8 col-xl-9">
+      <article class="{{post_class}} post-access-{{visibility}} has-sidebar has-toc">
+        {{#if access}}
+          {{!-- {{> social-share}} --}}
+        {{/if}}
+        <div class="post__content js-toc-content">
+          {{#if access}}
+            {{content}}
+          {{else}}
+            {{> post-access-cta visibility=visibility}}
+          {{/if}}
+        </div>
+
+        {{#if access}}
+          <div class="post-width">
+            {{!-- {{#unless @member}}
+              <hr>
+              {{> subscribe}}
+            {{/unless}}
+            <hr> --}}
+            {{!-- Include Comments, Cove or Disqus --}}
+            {{!-- {{> cove_comments}} --}}
+            {{!-- <hr class="m-t m-b-lg"> --}}
+          </div>
+        {{/if}}
+      </article>
+    </div>
+    <div class="col-xs-12 col-xl-3 toc-wrapper">
+      <div class="post-toc">
+        <div class="post-toc__head js-toc-toggle">
+          <h4>{{t "Table of Contents"}}</h4>
+          <div class="post-toc__icon js-toc-icon">{{>icon name="chevron-right"}}</div>
+        </div>
+        <div class="post-toc__content js-toc"></div>
+      </div>
+    </div>
+    
+    {{!-- <div class="col-xs-12 col-lg-4 col-xl-3 has-sidebar">
+      {{> sidebar}}
+    </div> --}}
+  </div>
+</div>
+
+{{!-- Related posts --}}
+{{> related-posts}}
+{{/post}}
+

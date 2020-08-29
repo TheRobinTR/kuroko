@@ -1,0 +1,60 @@
+{{!< ../default}}
+
+{{!-- <div class="container-fluid wrapper"> --}}
+  <div class="signin">
+    {{#if @member}}
+      {{!-- Logged in: Redirect home --}}
+      <script>window.location = '{{@site.url}}';</script>
+    {{else}}
+      <div class="member-cover">
+        {{#if @site.cover_image}}
+          <img class="lazyload site-cover" 
+            data-srcset="{{img_url @site.cover_image size="s"}} 300w,
+              {{img_url @site.cover_image size="l"}} 1000w"
+            data-sizes="(max-width: 800px) 50vw,
+              1000px"
+            data-src="{{img_url @site.cover_image size="l"}}"
+            src="{{asset 'images/img-placeholder-md.jpg'}}"
+            alt="{{@site.title}}"/>
+        {{/if}}
+        <div class="site-description">{{@site.description}}</div>
+      </div>
+      {{!-- Not logged in: Signin form --}}
+      <form class="signin-form" data-members-form="signin">
+        <div class="member-navigation">
+          <a class="link-home js-link-home" href="/">
+            {{> icon name="home" }}
+          </a>
+          <a class="link-back js-link-back" href="javascript:history.back()">
+            {{> icon name="arrow-left" }}
+          </a>
+        </div>
+        <h1 class="signin-title">{{t "Welcome back!"}}</h1>
+        <p>{{t "Sign into your account again for full access"}}</p>
+        <div class="signin-box m-b-lg">
+          <input data-members-email type="email" placeholder="{{t "Your email address"}}" autocomplete="off" required/>
+          <button class="btn btn--brand" type="submit">{{t "Send login link"}}</button>
+        </div>
+        <p><small>{{t "Don't have an account yet?"}} <a href="/signup/">{{t "Sign up"}}</a></small></p>
+        <div class="message message-success">
+          <div class="message__header">
+            <div class="message__type">{{t "Success"}}</div> 
+            <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+          </div>
+          <div class="message__content">
+            {{t "Great! Check your inbox and click the link to complete signin"}}
+          </div>
+        </div>
+        <div class="message message-error">
+          <div class="message__header">
+            <div class="message__type">{{t "Error"}}</div> 
+            <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+          </div>
+          <div class="message__content">
+            {{t "Please enter a valid email address!"}}
+          </div>
+        </div>
+      </form>
+    {{/if}}
+  </div>
+{{!-- </div> --}}

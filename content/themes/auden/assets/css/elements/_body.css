@@ -1,0 +1,38 @@
+/* Html & Body */
+html, body {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  font-family: var(--font-family-sans-serif);
+  line-height: var(--line-height-base);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+[data-color-scheme="light"] {
+  #theme-dark {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@media (print), (prefers-reduced-motion: reduce) { 
+  body {
+    --animation-duration: 1ms;
+  }
+}

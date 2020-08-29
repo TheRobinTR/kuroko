@@ -1,0 +1,160 @@
+button,
+.btn {
+  color: inherit;
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-sans-serif);
+  font-size: var(--font-size-base);
+  letter-spacing: calc(0.025 * var(--font-size-base));
+  line-height: 1;
+  background-color: var(--color-bg-accent-2);
+  text-transform: uppercase;
+  display: inline-block;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--global-radius);
+  padding: var(--gap) var(--gap-lg);
+  -webkit-appearance: button;
+
+  @mixin attention {
+    background-color: var(--color-bg-accent-3);
+  }
+
+  &--xs {
+    font-size: calc(0.8 * var(--font-size-base));
+  }
+
+  &--sm {
+    font-size: calc(0.9 * var(--font-size-base));
+  }
+
+  &--lg {
+    font-size: calc(1.2 * var(--font-size-base));
+  }
+
+  &--xl {
+    font-size: calc(1.4 * var(--font-size-base));
+  }
+
+  &--rounded {
+    border-radius: calc(3 * var(--font-size-base));
+  }
+
+  &--wide {
+    padding: var(--gap) var(--gap-xl);
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--opac {
+    background: transparent;
+  }
+
+  &--dark {
+    background-color: color(var(--color-dark) tint(5%));
+    color: var(--color-light);
+
+    @mixin attention {
+      background-color: color(var(--color-dark) tint(10%));
+    }
+  }
+
+  &--light {
+    background-color: color(var(--color-light) shade(5%));
+    color: var(--color-dark);
+
+    @mixin attention {
+      background-color: color(var(--color-light) shade(10%));
+    }
+  }
+
+  &--brand {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    border-color: var(--color-primary);
+
+    @mixin attention {
+      background-color: color(var(--color-primary) shade(10%));
+    }
+  }
+
+  &--secondary {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+
+    @mixin attention {
+      background-color: color(var(--color-secondary) shade(10%));
+    }
+  }
+
+  &--bordered {
+    box-shadow: 0 0 0px 1px var(--color-text-accent-3);
+    background-color: transparent;
+    color: var(--color-text-accent-3);
+
+    @mixin attention {
+      background-color: transparent;
+      box-shadow: 0 0 0px 2px var(--color-text-accent-3);
+    }
+
+    &.btn--brand {
+      box-shadow: 0 0 0px 1px var(--color-primary);
+      color: var(--color-primary);
+
+      @mixin attention {
+        background-color: transparent;
+        box-shadow: 0 0 0px 2px var(--color-primary);
+      }
+    }
+
+    &.btn--secondary {
+      box-shadow: 0 0 0px 1px var(--color-secondary);
+      color: var(--color-secondary);
+
+      @mixin attention {
+        background-color: transparent;
+        box-shadow: 0 0 0px 2px var(--color-secondary);
+      }
+    }
+
+    &.btn--dark {
+      box-shadow: 0 0 0px 1px var(--color-dark);
+      color: var(--color-dark);
+
+      @mixin attention {
+        background-color: transparent;
+        box-shadow: 0 0 0px 2px var(--color-dark);
+      }
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.cove-button {
+  background-color: var(--color-primary) !important;
+  padding: var(--gap-sm) var(--gap) !important;
+  border-radius: var(--global-radius) !important;
+  color: var(--color-light) !important;
+}
+
+.cove-input {
+  padding: var(--gap-sm) var(--gap) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--global-radius) !important;
+  box-shadow: none;
+
+  @mixin attention {
+    /* border: none !important; */
+    box-shadow: 0 0 0 1px var(--color-primary) !important;
+  }
+}
+
+#cove-input-body {
+  padding: var(--gap)!important;
+}

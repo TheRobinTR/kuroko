@@ -1,0 +1,128 @@
+/*========================================*/
+/* Settings
+/*========================================*/
+:root {
+  /*----------------------------------------*/
+  /* Global values
+  /*----------------------------------------*/
+  --global-max-width: 1280px;
+  --global-radius: 5px;
+  --global-radius-rounded: 50%;
+
+  /*--------------------------------------*/
+  /* Colors
+  /*--------------------------------------*/
+  /* brand colors */
+  --color-primary: #e50b4f;
+  --color-primary-light: #f4165b;
+  --color-primary-dark: #cd0a47;
+  --color-secondary: #f9d400;
+  --color-secondary-light: #ffdc14;
+  --color-secondary-dark: #e0be00;
+
+  /* neutral colors */
+  --color-black: #000;
+  --color-dark: #080c21;
+  --color-dark-accent: #14182c; 
+  --color-dark-accent-2: #1c1f33;
+  --color-grey-darker: #4c4c4c;
+  --color-grey-dark: #6b6b6b;
+  --color-grey: #c0c0c0;
+  --color-grey-light: #d2d2d2;
+  --color-grey-lighter: #e5e5e5;
+  --color-light-accent: #f2f2f2;
+  --color-light: #fafafa;
+  --color-white: #fff;
+
+  /* semantic colors */
+  --color-error: #fc3860;
+  --color-success: #48c774;
+  --color-warning: #fddd57;
+  --color-info: #249cee;
+
+  /* theme colors */
+  --color-text: var(--color-dark);
+  --color-text-accent-1: var(--color-dark-accent);
+  --color-text-accent-2: var(--color-grey-darker);
+  --color-text-accent-3: var(--color-grey-dark);
+  --color-text-reverse: var(--color-light);
+
+  --color-bg: var(--color-white);
+  --color-bg-accent-1: var(--color-light);
+  --color-bg-accent-2: var(--color-light-accent);
+  --color-bg-accent-3: var(--color-grey-lighter);
+  --color-bg-reverse: var(--color-dark);
+
+  --color-border: #eff1f3;
+  --color-border-dark: #212437;
+
+  /*--------------------------------------*/
+  /* Typography
+  /*--------------------------------------*/
+  --font-family-serif: 'Playfair Display', Times, Georgia, serif;
+  --font-family-sans-serif: 'Poppins', Tahoma, Arial, sans-serif;
+  --font-family-secondary: 'Open Sans', Tahoma, Arial, sans-serif;
+  --font-family-monospace: Consolas, Monaco,  monospace;
+  --font-size-base: 1rem;
+  --font-weight-ultra-thin: 100;
+  --font-weight-thin: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+  --line-height-base: 1.6;
+
+  /*--------------------------------------*/
+  /* Animation
+  /*--------------------------------------*/
+  --animation-name: ease-in-out;
+  --animation-duration: 400ms;
+  --animation-duration-lg: 800ms;
+  --animation-duration-xl: 1200ms;
+  --animation-delay: 100ms;
+
+  /*--------------------------------------*/
+  /* Spacing
+  /*--------------------------------------*/
+  --gap: 1em;
+  --gap-rem: 1rem;
+  --gap-xs: calc(var(--gap) * 0.25);
+  --gap-sm: calc(var(--gap) * 0.5);
+  --gap-lg: calc(var(--gap) * 2);
+  --gap-xl: calc(var(--gap) * 4);
+
+  /*--------------------------------------*/
+  /* Breakpoints
+  /*--------------------------------------*/
+  --breakpoint-sm: 36em;
+  --breakpoint-md: 48em;
+  --breakpoint-lg: 62em;
+  --breakpoint-xl: 75em;
+  --screen-sm-min: var(--breakpoint-sm)em;
+  --screen-md-min: var(--breakpoint-md)em;
+  --screen-lg-min: var(--breakpoint-lg)em;
+  --screen-xl-min: var(--breakpoint-lg)em;
+
+  /*--------------------------------------*/
+  /* Grid-system
+  /*--------------------------------------*/
+  --gutter-width: 1rem;
+  --outer-margin: 1rem;
+  --gutter-compensation: calc(var(--gutter-width) * -1);
+  --half-gutter-width: calc(var(--gutter-width) * 0.5);
+  --container-sm: calc(var(--breakpoint-sm) + var(--gutter-width));
+  --container-md: calc(var(--breakpoint-md) + var(--gutter-width));
+  --container-lg: calc(var(--breakpoint-lg) + var(--gutter-width));
+  --container-xl: calc(var(--breakpoint-xl) + var(--gutter-width));
+}
+
+/*----------------------------------------*/
+/* Media Queries
+/*----------------------------------------*/
+@custom-media --viewport-sm only screen and (min-width: 36em);
+@custom-media --viewport-md only screen and (min-width: 48em);
+@custom-media --viewport-lg only screen and (min-width: 62em);
+@custom-media --viewport-xl only screen and (min-width: 75em);
+

@@ -1,0 +1,27 @@
+{
+  "name":"Auden Ghost Theme",
+  "short_name":"Auden",
+  "description":"Auden - a Magazine & Membership Ghost Theme",
+  "lang":"en",
+  "start_url":"/",
+  "background_color":"#ffffff",
+  "display":"standalone",
+  "theme_color":"#e50b4f",
+  "icons":[
+     {
+        "src":"/assets/icon-48x48.png",
+        "sizes":"48x48",
+        "type":"image/png"
+     },
+     {
+      "src": "/assets/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

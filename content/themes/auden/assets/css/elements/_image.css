@@ -1,0 +1,6 @@
+/* Image */
+img {
+  max-width: 100%;
+  margin: 0 0 var(--gap);
+  /* border-radius: var(--global-radius); */
+}

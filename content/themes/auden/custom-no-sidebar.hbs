@@ -1,0 +1,41 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      {{> post-hero}}
+    </div>
+    <div class="col-xs-12">
+      <article class="{{post_class}} post-access-{{visibility}}">
+        {{#if access}}
+          {{!-- {{> social-share}} --}}
+        {{/if}}
+        <div class="post__content">
+          {{#if access}}
+            {{content}}
+          {{else}}
+            {{> post-access-cta visibility=visibility}}
+          {{/if}}
+        </div>
+
+        {{#if access}}
+          {{!-- {{#unless @member}}
+              <hr>
+              {{> subscribe}}
+            {{/unless}}
+          <hr> --}}
+          {{!-- Include Comments, Cove or Disqus --}}
+          {{!-- {{> cove_comments}} --}}
+          {{!-- <hr class="m-t m-b-lg"> --}}
+        {{/if}}
+      </article>
+    </div>
+  </div>
+</div>
+
+{{!-- Related posts --}}
+{{> related-posts}}
+{{/post}}
+

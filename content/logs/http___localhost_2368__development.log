@@ -1910,3 +1910,8 @@
 {"name":"Log","hostname":"YYK","pid":40706,"level":40,"msg":"Ghost is shutting down","time":"2020-08-29T02:07:12.829Z","v":0}
 {"name":"Log","hostname":"YYK","pid":40706,"level":40,"msg":"Ghost is shutting down","time":"2020-08-29T02:07:12.843Z","v":0}
 {"name":"Log","hostname":"YYK","pid":40706,"level":40,"msg":"Ghost has shut down","time":"2020-08-29T02:07:12.879Z","v":0}
+{"name":"Log","hostname":"YYK","pid":7077,"level":30,"msg":"Ghost is running in development...","time":"2020-08-29T08:35:17.904Z","v":0}
+{"name":"Log","hostname":"YYK","pid":7077,"level":30,"msg":"Listening on: 127.0.0.1:2368","time":"2020-08-29T08:35:17.905Z","v":0}
+{"name":"Log","hostname":"YYK","pid":7077,"level":30,"msg":"Url configured as: http://localhost:2368/","time":"2020-08-29T08:35:17.906Z","v":0}
+{"name":"Log","hostname":"YYK","pid":7077,"level":30,"msg":"Ctrl+C to shut down","time":"2020-08-29T08:35:17.907Z","v":0}
+{"name":"Log","hostname":"YYK","pid":7077,"level":30,"msg":"Ghost boot 8.423s","time":"2020-08-29T08:35:17.909Z","v":0}

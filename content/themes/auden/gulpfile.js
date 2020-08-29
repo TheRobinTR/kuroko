@@ -28,7 +28,7 @@ const npm_src   = 'node_modules/';
 const serve = done => {
   browserSync.init({
     port: 3368,
-    proxy: 'http://localhost:2368/'
+    proxy: 'https://localhost:2368/'
   });
   done();
 };

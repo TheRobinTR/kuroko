@@ -1,8 +1,8 @@
 {
-  "name":"Auden Ghost Theme",
-  "short_name":"Auden",
-  "description":"Auden - a Magazine & Membership Ghost Theme",
-  "lang":"en",
+  "name":"KUROKO",
+  "short_name":"Kuroko",
+  "description":"Kuroko 黑子的网站，欢迎品尝。",
+  "lang":"zh",
   "start_url":"/",
   "background_color":"#ffffff",
   "display":"standalone",

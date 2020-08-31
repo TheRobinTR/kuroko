@@ -4,7 +4,7 @@
   <div class="header__top">
     <div class="container-fluid wrapper">
       <div class="row">
-        <div class="col-xs-3 col-md-4 middle-xs is-flex">
+        <div class="col-xs-3 col-md-3 middle-xs is-flex">
           {{#if @labs.members}}
           {{!-- Search --}}
           <div class="header__search">
@@ -27,12 +27,13 @@
           </div>
         </div>
 
-        <div class="col-xs-6 col-md-4 center-xs">
+        <div class="col-xs-6 col-md-6 center-xs">
           {{!-- Blog logo or name --}}
           <div class="header__brand">
             <a href="{{@site.url}}">
               {{#if @site.logo}}
                 <img class="header__logo" src="{{@site.logo}}" alt="{{@site.title}}">
+				<h3 class="header_title_transcript">{{@site.title}}</h3>
               {{else}}
                 <h3 class="header__title">{{@site.title}}</h3>
               {{/if}}
@@ -40,7 +41,7 @@
           </div>
         </div>
         
-        <div class="col-xs-3 col-md-4 end-xs middle-xs is-flex">
+        <div class="col-xs-3 col-md-3 end-xs middle-xs is-flex">
           {{!-- Member Links --}}
           {{#if @labs.members}}
             <div class="header__member">

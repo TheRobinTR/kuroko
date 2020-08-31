@@ -7,6 +7,11 @@
   background-color: inherit;
   z-index: 50;
 
+  .header__logo {
+	  margin-right:10px;
+  }
+  
+
   &__top {
     border-bottom: 1px solid var(--color-border);
 
@@ -16,7 +21,7 @@
   }
 
   &.is-scrolled {
-    .header__brand h3 { font-size: calc(2.2 * var(--font-size-base)); }
+	.header__brand h3 { font-size: calc(1 * var(--font-size-base)); }
     .header__brand img { max-height: calc(2 * var(--font-size-base)); }
     .header__nav ul {
       height: 0px;
@@ -60,12 +65,12 @@
 
     h3 { 
       margin: 0; 
-      font-size: calc(2 * var(--font-size-base));
+      font-size: calc(1.2 * var(--font-size-base));
       transition: font-size var(--animation-duration) var(--animation-name);
       line-height: 1.2;
 
       @media (--viewport-md) {
-        font-size: calc(3 * var(--font-size-base));
+        font-size: calc(2 * var(--font-size-base));
       }
     }
   }
